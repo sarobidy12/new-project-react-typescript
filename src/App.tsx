@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider as StoreProvider } from 'mobx-react';
+import * as stores from './Store';
+import { BrowserRouter } from 'react-router-dom';
+import Route from "./Route";
 
 function App() {
+
+  // Component will mount check for the session check
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <StoreProvider {...stores}>
+        <div className="app">
+          <Route />
+        </div>
+      </StoreProvider>
+    </BrowserRouter>
   );
 }
 
